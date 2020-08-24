@@ -10,6 +10,7 @@ class RandomUnderSampl(BaseEstimator, TransformerMixin):
     def transform(self, X):
         # Primero copiamos el dataframe de datos de entrada 'X'
         data = X.copy()
+        print(data.head())
         # separar en las dos clases "aprovado y sospechoso 
         # nivelar los casos a  527  Df
         df_class_0 = data[data['OBJETIVO'] == 'Aceptado']
@@ -23,5 +24,6 @@ class RandomUnderSampl(BaseEstimator, TransformerMixin):
 
         print('Random under-sampling:')
         print(df_test_under.OBJETIVO.value_counts())
+        
 
         return df_test_under

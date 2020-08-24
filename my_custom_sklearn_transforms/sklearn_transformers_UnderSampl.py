@@ -15,13 +15,13 @@ class RandomUnderSampl(BaseEstimator, TransformerMixin):
         df_class_0 = data[data.iloc[:,-1] == 'Aceptado']
         df_class_1 = data[data.iloc[:,-1] == 'Sospechoso']
 
-        OBJETIVO_count = data.OBJETIVO.value_counts()
+        OBJETIVO_count = data.iloc[:,-1].value_counts()
 
 
         df_class_0_under = df_class_0.sample(count_class_1)
         df_test_under = pd.concat([df_class_0_under, df_class_1], axis=0)
 
         print('Random under-sampling:')
-        print(df_test_under.OBJETIVO.value_counts())
+        print(df_test_under.iloc[:,-1].value_counts())
 
         return df_test_under
